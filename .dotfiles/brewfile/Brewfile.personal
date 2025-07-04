@@ -1,0 +1,43 @@
+# =============================================
+#   Personal Applications
+# =============================================
+
+# Artificial Intelligence
+cask    "chatgpt"
+
+# Cloud Storage
+cask    "dropbox"                   # Dropbox client
+cask    "google-drive"              # Google Drive client
+cask    "onedrive"                  # OneDrive client
+
+# Creativity
+cask    "audacity"                  # Audio editor / recorder
+cask    "musescore"                 # Music notation software
+
+cask    "blender"                   # 3D modeling and animation
+cask    "autodesk-fusion"           # 3D CAD software
+cask    "kicad"                     # PCB design software
+
+cask    "gimp"                      # Photo editor
+cask    "inkscape"                  # Vector editor
+
+# Media Streaming and Utilities
+cask    "spotify"                   # Music streaming
+brew    "pandoc"                    # File converter
+brew    "youtube-dl"                # YouTube video downloader
+
+# Video Conferencing
+cask    "microsoft-teams"
+
+# Social
+cask    "discord"
+cask    "signal"
+cask    "whatsapp"
+
+# Productivity
+cask    "slack"                     # Team communication
+cask    "notion"                    # Note-taking and organization
+
+# Gaming
+cask    "steam"
+cask    "itch"

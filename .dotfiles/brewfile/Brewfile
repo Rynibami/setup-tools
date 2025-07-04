@@ -1,0 +1,155 @@
+# ============================================================
+#   Brewfile - Main configuration
+# ============================================================
+
+# =============================================
+#   Homebrew Options
+# =============================================
+
+if      OS.mac?     cask_args appdir: '~/Applications', require_sha: true
+elsif   OS.linux?   cask_args appdir: '~/.local/share/applications', require_sha: true
+elsif   OS.windows? cask_args appdir: '~/.local/share/applications', require_sha: true
+else
+    raise "Unsupported OS type: ${OSTYPE}"
+end
+
+# =============================================
+#   Repositories
+# =============================================
+
+# Homebrew taps
+tap "homebrew/autoupdate"
+tap "homebrew/core"
+tap "homebrew/cask"
+tap "homebrew/cask-fonts"
+tap "homebrew/services"
+
+# =============================================
+#   Applications - Homebrew
+# =============================================
+
+# ==============================
+#   Configuration
+# ==============================
+
+brew    "dotter"                    # Dotfile manager
+brew    "rcmdnk/file/brew-file"     # Homebrew Brewfile management
+
+# ==============================
+#   Shell / Terminal
+# ==============================
+
+# Terminal
+brew    "starship"                  # Cross-shell prompt
+brew    "tmux"                      # Terminal multiplexer
+
+# Shell
+brew    "zsh-autosuggestions"       # Zsh plugin for fish-like autosuggestions
+brew    "zsh-completions"           # Additional Zsh completions
+brew    "zsh-syntax-highlighting"   # syntax highlighting for Zsh
+
+# General utilities
+brew    "exa"                       # Modern replacement for 'ls'
+brew    "figlet"                    # ASCII art
+brew    "fzf"                       # Fuzzy file finder and filtering
+brew    "rsync"                     # Fast incremental file transfer
+brew    "tldr"                      # Community documentation
+brew    "zoxide"                    # Auto-learning navigation
+
+# ==============================
+#   Backup, Cloud and Storage
+# ==============================
+
+cask    "daisydisk"                 # Disk analyzer
+brew    "dua-cli"                   # Disk usage analyzer
+brew    "rclone"                    # Manage cloud storage
+
+# ==============================
+#   Networking
+# ==============================
+
+# Client
+brew    "curl"                      # Networking client
+
+# Analysis and monitoring
+brew    "nmap"                      # Port scanner
+brew    "gping"                     # Ping with a graph
+brew    "speedtest-cli"             # Bandwidth testing tool
+cask    "wireshark"                 # Network protocol analyzer
+
+# VPN and Proxy
+brew    "openvpn"                   # OpenVPN client
+brew    "wireguard-tools"           # WireGuard VPN tools
+
+# ==============================
+#   Software Development
+# ==============================
+
+# Version Control
+brew    "gh"                        # GitHub CLI
+brew    "git"                       # Git version control
+brew    "git-extras"                # Git version control on steroids
+cask    "sourcetree"                # Git visual client
+
+brew    "pre-commit"                # Framework for managing pre-commit hooks
+brew    "commitlint"                # Linter for commit messages
+
+# Integrated Development Environments
+cask    "visual-studio-code"
+brew    "helix"
+
+# Compilers and Package Managers
+brew    "gcc"                       # GNU C++ compilers
+brew    "go"                        # Compiler for Go Lang
+brew    "lua"                       # Lua interpreter
+brew    "luarocks"                  # Package manager for Lua
+brew    "python"                    # Python interpreter
+brew    "rust"                      # Rust language
+
+# Virutalization and Containerization
+cask    "docker"                    # Docker application
+brew    "docker-completion"         # Bash completion for Docker commands
+brew    "docker-compose"            # Docker for multi-container applications
+
+# Databases
+brew    "postgresql"                # PostgreSQL database server
+
+# Miscellaneous
+brew    "terminal-notifier"         # Trigger Mac notifications from terminal
+
+# ==============================
+#   Writing and Documents
+# ==============================
+
+# Fonts
+cask    "font-courier-prime-code-nerd-font"
+cask    "font-inconsolata-go-nerd-font"
+cask    "font-jetbrains-mono-nerd-font"
+cask    "font-source-code-pro-nerd-font"
+cask    "font-ubuntu-mono-nerd-font"
+
+# Text processing and typesetting
+cask    "mactex"
+brew    "typst"                     # Typesetting system for technical documents
+
+# Documents
+brew    "pandoc"                    # Document converter
+
+# Images
+brew    "exiftool"                  # Read, write and modify exif data
+
+# ==============================
+#   Management and Planning
+# ==============================
+
+brew    "task"                      # task management
+
+# ==============================
+#   Include Other Brewfiles
+# ==============================
+
+# OS specific Brewfile
+file "~/.config/brewfile/Brewfile.${OSTYPE}"
+
+# User specific Brewfile
+main "~/.config/brewfile/Brewfile.personal"

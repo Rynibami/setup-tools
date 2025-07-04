@@ -1,0 +1,63 @@
+# ============================================================
+#   Brewfile - MacOS configuration
+# ============================================================
+
+# =============================================
+#   Repositories
+# =============================================
+
+# Apple related taps
+tap         "apple/apple"
+
+# =============================================
+#   Applications - Homebrew
+# =============================================
+
+# Terminal Emulator
+cask        "ghostty"
+
+# CLI Tools
+brew        "mas"                   # Mac App Store CLI interface
+brew        "iproute2mac"           # MacOS ip command replacement
+brew        "m-cli"                 # MacOS Swiss army knife
+
+# Mac OS Utility Apps
+cask        "keka"                  # File archiver and extractor
+cask        "mos"                   # Mouse and trackpad gesture customization
+cask        "openinterminal-lite"   # Open terminal from Finder
+
+# =============================================
+#   Applications - Mac App Store
+# =============================================
+
+# ==============================
+#   Developer
+# ==============================
+
+appstore    "Xcode",                id: 497799835
+appstore    "Boop",                 id: 1518425043
+
+# ==============================
+#   Utilities
+# ==============================
+
+appstore    "Amphetamine",          id: 937984704
+appstore    "The Unarchiver",       id: 425424353
+
+# ==============================
+#   Productivity
+# ==============================
+
+appstore    "Magnet",               id: 441258766
+
+# Apple's productivity suite
+appstore    "Keynote",              id: 409183694
+appstore    "Numbers",              id: 409203825
+appstore    "Pages",                id: 409201541
+
+# Apple's professional suite
+# appstore    "Final Cut Pro",        id: 424389933
+# appstore    "Logic Pro",            id: 634148309
+# appstore    "MainStage",            id: 634159523
+# appstore    "Motion",               id: 434290957
+# appstore    "Compressor",           id: 424390742

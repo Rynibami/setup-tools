@@ -1,0 +1,7 @@
+# Ignore git files
+.git
+
+# Ignore non-global dotter files
+.dotfiles/.dotter/cache/
+.dotfiles/.dotter/cache.toml
+.dotfiles/.dotter/local.toml 

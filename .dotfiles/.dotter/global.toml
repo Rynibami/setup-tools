@@ -1,0 +1,24 @@
+[helpers]
+
+[default]
+depends                         = []
+
+[default.variables]
+
+[default.files]
+"bin/starship-cached-func.sh"   = "~/.local/bin/starship-cached-func"
+"terminal/.zshrc"               = "~/.zshrc"
+
+[default.files.brewfile]
+target                          = "~/.config/brewfile"
+type                            = "symbolic"
+recurse                         = false
+
+[default.files.starship]
+target                          = "~/.config/starship"
+type                            = "symbolic"
+recurse                         = false
+
+
+[settings]
+default_target_type             = "automatic"

@@ -1,0 +1,164 @@
+# ========================================
+#   General Settings
+# ========================================
+
+format = """
+$os $username $hostname $directory \
+$git_branch $git_status $git_metrics \
+$fill ${custom.weather} $time
+$character
+"""
+
+right_format            = "${custom.homebrew_update_count}"
+
+add_newline             = true
+continuation_prompt     = "[▷ ](bold bright-black)"
+palette                 = "theme"
+
+# ========================================
+#   Palette Settings
+# ========================================
+
+[palettes.theme]
+
+user                    = "#548DBE"
+root                    = "#CC6666"
+
+host                    = "#8ABEB7"
+ipv4                    = "#8ABEB7"
+path                    = "#DE935F"
+repo                    = "#F0C674"
+
+weather                 = "#30C070"
+time                    = "#E9618C"
+text                    = "#FFFFFF"
+
+# ========================================
+#   General Component Settings
+# ========================================
+
+[character]
+success_symbol          = "[\\$](bold green)"
+error_symbol            = "[\\$](bold red)"
+
+[directory]
+style                   = "bold fg:text bg:path"
+format                  = "[[$path]($style)](path)"
+truncation_length       = 3
+truncation_symbol       = "» "
+
+[fill]
+disabled                = false
+symbol                  = ' '
+style                   = 'bold green'
+
+[hostname]
+disabled                = false
+ssh_only                = false
+style                   = "bold fg:text bg:host"
+ssh_symbol              = "🔗 "
+format                  = '[[$ssh_symbol$hostname]($style)](host)'
+
+[localip]
+disabled                = true
+ssh_only                = true
+style                   = "bold fg:text bg:ipv4"
+format                  = "[[$localipv4]($style)](ipv4)"
+
+[os]
+disabled                = false
+format                  = "$symbol"
+
+[os.symbols]
+Macos                   = ""
+
+[username]
+disabled                = false
+show_always             = true
+style_user              = "bold fg:text bg:user"
+style_root              = "bold fg:text bg:root"
+format                  = "[[$user]($style)](user)"
+
+[git_branch]
+disabled                = false
+symbol                  = "⎇"
+style                   = "bold fg:text bg:repo"
+format                  = '[[$symbol $branch]($style)](repo)'
+
+[git_status]
+conflicted              = "[C](bold red)"
+deleted                 = "[D](bold orange)"
+modified                = "[M](bold)"
+renamed                 = "[R](bold)"
+staged                  = "[S](bold)"
+typechanged             = "[T](bold)"
+untracked               = "[?](bold)"
+stashed                 = "[*](bold cyan"
+ahead                   = "[+](bold green)"
+behind                  = "[-](bold yellow)"
+diverged                = "[~](bold red)"
+up_to_date              = "[0](bold white)"
+format                  = '$ahead_behind$all_status'
+
+[git_metrics]
+disabled                = false
+ignore_submodules       = false
+only_nonzero_diffs      = false
+added_style             = "bold green"
+deleted_style           = "bold red"
+format                  = "[${added}]($added_style) [$deleted]($deleted_style)"
+
+[time]
+disabled                = false
+time_format             = "%R"
+style                   = "bold fg:text bg:time"
+format                  = "[[$time]($style)](time)"
+
+# ========================================
+#   Custom Component Settings
+# ========================================
+
+[custom.homebrew_update_count]
+description             = "Homebrew update count"
+shell                   = ["bash", "--noprofile", "--norc"]
+when                    = true
+command                 = """
+    ~/.local/bin/starship-cached-func \
+        "brew outdated | wc -l | xargs printf '%02d'" \
+        homebrew_update_count 600 "--"
+"""
+
+symbol                  = "📦"
+style                   = "bold fg:yellow"
+format                  = "$symbol [$output]($style)"
+
+[custom.weather]
+description             = "Weather info by wttr.in"
+shell                   = ["bash", "--noprofile", "--norc"]
+when                    = true
+command                 = """
+    ~/.local/bin/starship-cached-func \
+        "curl 'https://wttr.in?format=%t'" \
+        weather 600
+"""
+
+# NOT USED YET
+
+[custom.cargo_version]
+detect_extensions       = ['rs']
+detect_files            = ['Cargo.toml']
+style                   = 'green'
+command                 = """
+    cat Cargo.toml 
+    | grep version 
+    | head -1 
+    | cut -f2 -d\"
+"""
+
+[custom.user_uppercase]
+description             = "Prints the username as uppercase string."
+when                    = true
+command                 = "echo $USER | tr '[:lower:]' '[:upper:]'"
+shell                   = ["bash", "--noprofile", "--norc"]
+style                   = "bold fg:cyan"
+format                  = "[$output](${username.style_root})"
