@@ -1,24 +1,28 @@
-[helpers]
+[settings]
+default_target_type             = "automatic"
 
+# Default configuration for dotter
 [default]
 depends                         = []
 
-[default.variables]
-
 [default.files]
-"bin/starship-cached-func.sh"   = "~/.local/bin/starship-cached-func"
-"terminal/.zshrc"               = "~/.zshrc"
+".gitignore"                    = "~/.gitignore"
+".zshrc"                        = "~/.zshrc"
 
+# Scripts / binaries
+[default.files.bin]
+target                          = "~/.local/bin"
+type                            = "directory"
+recurse                         = true
+
+# Brew configuration files
 [default.files.brewfile]
 target                          = "~/.config/brewfile"
 type                            = "symbolic"
 recurse                         = false
 
+# Starship configuration files
 [default.files.starship]
 target                          = "~/.config/starship"
 type                            = "symbolic"
 recurse                         = false
-
-
-[settings]
-default_target_type             = "automatic"

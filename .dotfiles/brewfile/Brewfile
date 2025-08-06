@@ -21,8 +21,8 @@ end
 tap "homebrew/autoupdate"
 tap "homebrew/core"
 tap "homebrew/cask"
-tap "homebrew/cask-fonts"
 tap "homebrew/services"
+tap "rcmdnk/file"
 
 # =============================================
 #   Applications - Homebrew
@@ -33,7 +33,7 @@ tap "homebrew/services"
 # ==============================
 
 brew    "dotter"                    # Dotfile manager
-brew    "rcmdnk/file/brew-file"     # Homebrew Brewfile management
+brew    "brew-file"                 # Homebrew Brewfile management
 
 # ==============================
 #   Shell / Terminal
@@ -98,13 +98,14 @@ brew    "commitlint"                # Linter for commit messages
 cask    "visual-studio-code"
 brew    "helix"
 
-# Compilers and Package Managers
+# Code Compilers, Analysis Tools and Package Managers
 brew    "gcc"                       # GNU C++ compilers
 brew    "go"                        # Compiler for Go Lang
 brew    "lua"                       # Lua interpreter
 brew    "luarocks"                  # Package manager for Lua
 brew    "python"                    # Python interpreter
 brew    "rust"                      # Rust language
+brew    "rust-analyzer"             # Rust language code highlighting and analysis
 
 # Virutalization and Containerization
 cask    "docker"                    # Docker application

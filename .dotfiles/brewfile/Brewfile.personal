@@ -41,3 +41,4 @@ cask    "notion"                    # Note-taking and organization
 # Gaming
 cask    "steam"
 cask    "itch"
+cask    "mythic"
